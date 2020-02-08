@@ -1,0 +1,8 @@
+const fs = require("fs");
+
+[
+  {
+    "title": "Test Title",
+    "text": "Test text"
+  }
+]
