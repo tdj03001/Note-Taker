@@ -1,5 +1,5 @@
 const app = require("express");
-
+const fs = require("fs"); // on save of note, fs.writeFile to db.json
 
 var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");
