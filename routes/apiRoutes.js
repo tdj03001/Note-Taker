@@ -10,4 +10,7 @@ module.exports = function (app) {
     noteArray.push(req.body);
     res.json(true);
   });
+
+  //add the DELETE route
+  app.delete("/api/notes/:id")
 }
