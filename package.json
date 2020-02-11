@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.16.4",
+    "gh-pages": "^2.2.0",
     "mysql": "^2.16.0"
   }
 }
