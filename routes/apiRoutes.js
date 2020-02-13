@@ -37,25 +37,61 @@ module.exports = function (app) {
 
   app.delete("/api/notes/:id", function (req, res) {
     // for (const i = 0; i < noteArray.length; i++) {
+    fs.readFile("./data/db.json", "utf-8", function (err, data) {
+      if (err) throw err;
+      const arrayOfObjects = JSON.parse(data);
+      for (let i = 0; i < arrayOfObjects.length; i++) {
+        let query = { id: req.params.id }
+        if (req.params.id === id) {
+          delete query;
+        }
+      }
 
-    // }
+      // console.log(noteArray[1].id)
 
-    let id = parseInt(req.params.id);
-    delete noteArray[id];
+      // let note = req.body;
+      // for (let i = 0; i < noteArray.length; i++) {
+      //   if (noteArray.id === req.params.id) {
+      //     delete note;
+      //   }
+
+      //   //   // res.json(noteArray);
+      // }
+
+      // let id = parseInt(req.params.id);
+      // delete noteArray[id];
+      // res.json(noteArray);
+
+      fs.writeFile("./data/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
+        if (err) throw err;
+
+        console.log("Done!");
+      })
+    })
+
+
 
   })
+};
 
-}
+
+// let query = { id: req.params.id }
+
+// delete (query, function (err) {
+//   if (err) {
+//     console.log(err);
+//   }
+//   res.send("Success");
+// })
+
 
 
 // DEVELOPMENT NOTES=======================================================================
 
-// fix duplicate id issue - when server restarts, so does new id increment
-//get delete working
-//get heroku css working
+// fix duplicate id issue - when page is refreshed, new id increment starts over
+// get delete working
+// get heroku css working
 // README
+// could deploy to github pages with gh-pages package 
 
-// deploy to github pages with gh-pages package 
-//add fs code to the app.delete. Write/create id on save. Use loop to loop through json file by id when deleting, and to create the id (basically the last id in the existing list +1 for the new item's id)
-
-// ===========================================================================
+// ========================================================================================
