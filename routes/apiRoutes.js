@@ -5,7 +5,16 @@ const noteArray = require("../data/db.json");
 module.exports = function (app) {
 
   app.get("/api/notes", function (req, res) {
-    res.json(noteArray);
+
+    fs.readFile("./data/db.json", function (err, data) {
+      if (err) return res.sendStatus(500)
+      try {
+        notes = JSON.parse(data)
+      } catch (err) {
+        res.sendStatus(500)
+      }
+      res.json(notes)
+    })
   });
 
   app.post("/api/notes", function (req, res) {
