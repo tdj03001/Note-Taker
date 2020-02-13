@@ -68,3 +68,14 @@ html, body {
   padding: 20px;
   cursor: pointer;
 }
+
+/* 
+  Tried to get note content to display on mouse-over
+  
+.list-group-item {
+  display: none;
+} */
+
+/* .list-group-item:hover .list-group-item:first-child {
+display: block;
+} */
