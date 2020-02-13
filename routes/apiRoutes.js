@@ -23,9 +23,8 @@ module.exports = function (app) {
     fs.readFile("./data/db.json", "utf-8", function (err, data) {
       if (err) throw err;
 
-      var arrayOfObjects = JSON.parse(data);
+      const arrayOfObjects = JSON.parse(data);
       arrayOfObjects.push(req.body);
-      noteArray["id"] = "2";
       console.log(arrayOfObjects);
 
       fs.writeFile("./data/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
@@ -47,7 +46,11 @@ module.exports = function (app) {
 
 // DEVELOPMENT NOTES=======================================================================
 
-// deploy to heroku, need index.php and something else (composer.json?)
+// get ids working
+//get delete working
+//get heroku css working
+// README
+
 // deploy to github pages with gh-pages package 
 //add fs code to the app.delete. Write/create id on save. Use loop to loop through json file by id when deleting, and to create the id (basically the last id in the existing list +1 for the new item's id)
 

@@ -1,4 +1,3 @@
-
 debugger
 var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");
@@ -51,11 +50,17 @@ var renderActiveNote = function () {
   }
 };
 
+let id = 0;
+const getId = function () {
+  id++;
+  return `note${id}`;
+}
 // Get the note data from the inputs, save it to the db and update the view
 var handleNoteSave = function () {
-  var newNote = {
+  let newNote = {
     title: $noteTitle.val(),
     text: $noteText.val(),
+    id: getId()
   };
 
   saveNote(newNote).then(function () {
@@ -143,3 +148,5 @@ $noteText.on("keyup", handleRenderSaveBtn);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
+
+
