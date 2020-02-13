@@ -36,9 +36,13 @@ module.exports = function (app) {
   })
 
   app.delete("/api/notes/:id", function (req, res) {
-    for (const i = 0; i < noteArray.length; i++) {
+    // for (const i = 0; i < noteArray.length; i++) {
 
-    }
+    // }
+
+    let id = parseInt(req.params.id);
+    delete noteArray[id];
+
   })
 
 }
@@ -46,7 +50,7 @@ module.exports = function (app) {
 
 // DEVELOPMENT NOTES=======================================================================
 
-// get ids working
+// fix duplicate id issue - when server restarts, so does new id increment
 //get delete working
 //get heroku css working
 // README
