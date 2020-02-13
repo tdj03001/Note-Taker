@@ -25,21 +25,21 @@ module.exports = function (app) {
 
       var arrayOfObjects = JSON.parse(data);
       arrayOfObjects.push(req.body);
+      noteArray["id"] = "2";
       console.log(arrayOfObjects);
 
       fs.writeFile("./data/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
         if (err) throw err;
+
         console.log("Done!");
       })
     })
-
-
-
   })
 
-
   app.delete("/api/notes/:id", function (req, res) {
-    //see below
+    for (const i = 0; i < noteArray.length; i++) {
+
+    }
   })
 
 }
