@@ -50,7 +50,7 @@ var renderActiveNote = function () {
   }
 };
 
-let id = 0;
+let id = "";
 const getId = function () {
   id++;
   return `note${id}`;
