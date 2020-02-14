@@ -1,5 +1,5 @@
 const fs = require("fs");
-const noteArray = require("../data/db.json");
+const noteArray = require("../db/db.json");
 
 
 module.exports = function (app) {
