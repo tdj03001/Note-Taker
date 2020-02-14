@@ -1,11 +1,11 @@
 const fs = require("fs");
-const noteArray = require("../db/db.json");
+const noteArray = require("../data/db.json");
 
 module.exports = function (app) {
 
   app.get("/api/notes", function (req, res) {
 
-    fs.readFile("./db/db.json", function (err, data) {
+    fs.readFile("./data/db.json", function (err, data) {
       if (err) return res.sendStatus(500)
       try {
         notes = JSON.parse(data)
@@ -19,14 +19,14 @@ module.exports = function (app) {
   app.post("/api/notes", function (req, res) {
     res.json(true);
 
-    fs.readFile("./db/db.json", "utf-8", function (err, data) {
+    fs.readFile("./data/db.json", "utf-8", function (err, data) {
       if (err) throw err;
 
       const arrayOfObjects = JSON.parse(data);
       arrayOfObjects.push(req.body);
       console.log(arrayOfObjects);
 
-      fs.writeFile("./db/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
+      fs.writeFile("./data/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
         if (err) throw err;
 
         console.log("Done!");
