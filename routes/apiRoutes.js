@@ -89,10 +89,7 @@ module.exports = function (app) {
 
 // fix duplicate id issue - when page is refreshed, new id increment starts over
 // get delete working
-// get heroku css working
 // get ids working
-//get delete working
-//get heroku css working
 // README
 // could deploy to github pages with gh-pages package 
 
