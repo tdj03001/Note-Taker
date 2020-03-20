@@ -1,1 +1,12 @@
-[{"title":"1","text":"1","id":"note1"},{"title":"2","text":"2","id":"note1"}]
+[
+  {
+    "title": "Buy hand sanitizer",
+    "text": "Buy enough for the whole family to use daily for a month",
+    "id": "note1"
+  },
+  {
+    "title": "Jury Duty",
+    "text": "Call the day before to confirm appearance",
+    "id": "note2"
+  }
+]
