@@ -1,4 +1,4 @@
-# UPenn-Week-11-Homework-ExpressNoteTaker
+# Note Taker
 
 ## Purpose
 To create notes for yourself as a way to organize a to-do list
