@@ -13,7 +13,7 @@ module.exports = function (app) {
         res.sendStatus(500)
       }
       res.json(notes)
-    })
+    });
   });
 
   app.post("/api/notes", function (req, res) {
@@ -30,60 +30,64 @@ module.exports = function (app) {
         if (err) throw err;
 
         console.log("Done!");
+      });
+    });
+  });
+
+
+  app.delete("/api/notes/:id", function (req, res) {
+
+    for (let i = 0; i < noteArray.length; i++) {
+      console.log("loop");
+      fs.readFile("./data/db.json", "utf-8", function (err, data) {
+        if (err) throw err;
+        const arrayOfObjects = JSON.parse(data);
+        for (let i = 0; i < arrayOfObjects.length; i++) {
+          let query = { id: req.params.id }
+          if (req.params.id === "id") {
+            delete query;
+          }
+        }
       })
+    }
+
+    console.log(noteArray[1].id)
+
+    let note = req.body;
+    for (let i = 0; i < noteArray.length; i++) {
+      if (noteArray.id === req.params.id) {
+        delete note;
+        console.log("deleted note");
+      }
+
+      res.json(noteArray);
+    }
+
+    let id = parseInt(req.params.id);
+    delete noteArray[id];
+    res.json(noteArray);
+
+    fs.writeFile("./data/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
+      if (err) throw err;
+
+      console.log("Done!");
     })
   })
+
+}
+
+
+
+let query = { id: req.params.id }
+
+delete (query, function (err) {
+  if (err) {
+    console.log(err);
+  }
+  res.send("Success");
+})
+  });
 };
-
-//   app.delete("/api/notes/:id", function (req, res) {
-
-//     //   // for (const i = 0; i < noteArray.length; i++) {
-//     //   fs.readFile("./data/db.json", "utf-8", function (err, data) {
-//     //     if (err) throw err;
-//     //     const arrayOfObjects = JSON.parse(data);
-//     //     for (let i = 0; i < arrayOfObjects.length; i++) {
-//     //       let query = { id: req.params.id }
-//     //       if (req.params.id === id) {
-//     //         delete query;
-//     //       }
-//     //     }
-
-//     //     // console.log(noteArray[1].id)
-
-//     //     // let note = req.body;
-//     //     // for (let i = 0; i < noteArray.length; i++) {
-//     //     //   if (noteArray.id === req.params.id) {
-//     //     //     delete note;
-//     //     //   }
-
-//     res.json(noteArray);
-//     //     // }
-
-//     //     // let id = parseInt(req.params.id);
-//     //     // delete noteArray[id];
-//     //     // res.json(noteArray);
-
-//     //     fs.writeFile("./data/db.json", JSON.stringify(arrayOfObjects), "utf-8", function (err) {
-//     //       if (err) throw err;
-
-//     //       console.log("Done!");
-//     //     })
-//     //   })
-
-//   })
-// };
-
-
-// let query = { id: req.params.id }
-
-// delete (query, function (err) {
-//   if (err) {
-//     console.log(err);
-//   }
-//   res.send("Success");
-// })
-
-
 
 // DEVELOPMENT NOTES=======================================================================
 
