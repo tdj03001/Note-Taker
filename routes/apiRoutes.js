@@ -72,22 +72,20 @@ module.exports = function (app) {
 
       console.log("Done!");
     })
+
+
+
+    let query = { id: req.params.id }
+
+    delete (query, function (err) {
+      if (err) {
+        console.log(err);
+      }
+      res.send("Success");
+    })
   })
-
-}
-
-
-
-let query = { id: req.params.id }
-
-delete (query, function (err) {
-  if (err) {
-    console.log(err);
-  }
-  res.send("Success");
-})
-  });
 };
+
 
 // DEVELOPMENT NOTES=======================================================================
 
