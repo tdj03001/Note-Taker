@@ -4,6 +4,7 @@ var $noteText = $(".note-textarea");
 var $saveNoteBtn = $(".save-note");
 var $newNoteBtn = $(".new-note");
 var $noteList = $(".list-container .list-group");
+var $delBtn = $(".fa-trash-alt");
 
 // activeNote is used to keep track of the note in the textarea
 var activeNote = {};
@@ -130,7 +131,11 @@ var renderNoteList = function (notes) {
   }
 
   $noteList.append(noteListItems);
+
+
 };
+
+
 
 // Gets notes from the db and renders them to the sidebar
 var getAndRenderNotes = function () {
@@ -145,6 +150,7 @@ $newNoteBtn.on("click", handleNewNoteView);
 $noteList.on("click", ".delete-note", handleNoteDelete);
 $noteTitle.on("keyup", handleRenderSaveBtn);
 $noteText.on("keyup", handleRenderSaveBtn);
+$delBtn.on("click", handleNoteDelete);
 
 // Gets and renders the initial list of notes
 getAndRenderNotes();
